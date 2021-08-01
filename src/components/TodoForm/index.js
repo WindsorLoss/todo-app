@@ -1,12 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container } from './styles'
 
 export function TodoForm({ onSubmit, onChange, value }) {
-
-    // const [newTodo, setNewTodo] = useState('')
-
-    
-
     return (
         <Container>
             <form onSubmit={onSubmit}>
