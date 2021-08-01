@@ -24,9 +24,12 @@ export const Container = styled.div`
         color: white;
 
         &:focus {
-            border-bottom: 2px solid var(--buttons);
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
+            outline: 0; 
+
+            border-bottom: 3px solid var(--buttons);
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+
         }
     }
 
@@ -44,6 +47,10 @@ export const Container = styled.div`
 
         &:hover {
             filter: brightness(90%);
+        }
+
+        &:active {
+            transform: translateY(4px);
         }
 
     }
