@@ -11,4 +11,11 @@ export const Container = styled.div`
 
     height: 100vh;
     width: 80%;
+
+    h1 {
+        font-size: 2rem;
+
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
 `

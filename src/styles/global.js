@@ -3,11 +3,11 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyle = createGlobalStyle`
 
     :root{
-        animation-name: aumentar;
-        
+        font-family: Arial, Helvetica, sans-serif;
+
         --background: #282828;
         --shape-color: #494949;
-        --buttons: #8f0d9a
+        --buttons: #8f0d9a;      
 
     }
 
