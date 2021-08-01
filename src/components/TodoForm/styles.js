@@ -16,7 +16,7 @@ export const Container = styled.div`
         border: 0;
         border-radius: 15px;
 
-        width: 38rem;
+        width: 78%;
         height: 2.58rem;
         padding-left: 1rem;
 
@@ -38,7 +38,7 @@ export const Container = styled.div`
         color: white;
         font-size: 1.2rem;
 
-        width: 6.3rem;
+        width: 20%;
 
         transition: filter 0.5s;
 
