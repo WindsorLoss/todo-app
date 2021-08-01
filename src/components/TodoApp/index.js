@@ -14,9 +14,13 @@ export function TodoApp() {
     function handleSubmit(e) {
         e.preventDefault()
 
-        setTodos([newTodo, ...todos])
-
-        setNewTodo('')
+        if(newTodo){    
+            setTodos([newTodo, ...todos])
+    
+            setNewTodo('')
+        } else {
+            alert('Nenhum valor inserido. Tente novamente.')
+        }
     }
 
     return (
