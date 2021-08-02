@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TodoForm } from '../TodoForm'
+import { TodoList } from '../TodoList'
 import { Container } from './styles'
 
 export function TodoApp() {
 
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState(['teste'])
     const [newTodo, setNewTodo] = useState('')
 
-    function handleChange(text) {
+    function handleChangeCreatingTodo(text) {
         setNewTodo(text.target.value)
     }
 
@@ -23,13 +24,43 @@ export function TodoApp() {
         }
     }
 
+    function handleDelete(index) {
+        const allTodos = todos
+        allTodos.splice(index, 1)
+        setTodos(allTodos)
+    }
+    
+
+    useEffect(() => {
+        console.log(todos)
+    }, [todos])
+
     return (
         <Container>
             <TodoForm 
                 onSubmit={handleSubmit} 
-                onChange={handleChange}
+                onChange={handleChangeCreatingTodo}
                 value={newTodo}
             />
+
+            <h1>O que fazer em seguida?</h1>
+
+            {
+                todos.map((todo, index) => {
+
+                    return <TodoList 
+                        key={index}
+                        onChange={text => {
+                            const allTodos = todos
+                            allTodos.splice(index, 1, text.target.value)
+                            setTodos(allTodos)
+                        }}
+                        onDelete={() => handleDelete(index)}
+                        todo={todo}
+                    />
+                })
+            }
+
         </Container>
     )
 }
