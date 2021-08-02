@@ -8,10 +8,11 @@ export const Container = styled.div`
     margin: 0 auto;
 
     padding-top: 2rem;
+    padding-bottom: 2.5rem;
 
     height: 100vh;
     width: 80%;
-
+    
     h1 {
         font-size: 2rem;
 
