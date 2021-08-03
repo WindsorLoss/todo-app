@@ -55,7 +55,11 @@ export function TodoApp() {
                 value={newTodo}
             />
 
-            <h1>O que fazer em seguida?</h1>
+            {
+                todos.length > 0 
+                ? <h1>O que fazer em seguida?</h1>
+                : <h1>Quais os planos para hoje?</h1>
+            }
 
             {
                 todos.map((todo) => {
