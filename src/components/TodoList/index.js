@@ -10,7 +10,7 @@ export function TodoList({ onChange, onDelete, todo }) {
 
     function handleEdit() {
 
-        if(todo.length > 0){
+        if(todo.text.length > 0){
             isDisabled ? setIsDisabled(false) : setIsDisabled(true)
         } else {
             alert('Nenhum texto inserido. Tente novamente.')
@@ -38,11 +38,14 @@ export function TodoList({ onChange, onDelete, todo }) {
                 {
                     !isChecked
                     ?   <input 
-                            value={todo} 
+                            value={todo.text} 
                             disabled={isDisabled}
-                            onChange={onChange}
+                            onChange={text => {
+                                const textUpdated = text.target.value
+                                onChange(textUpdated, todo.id)
+                            }}
                         />
-                    :   <p>{todo}</p>
+                    :   <p>{todo.text}</p>
                 }
                 
             </div>
@@ -55,7 +58,7 @@ export function TodoList({ onChange, onDelete, todo }) {
                 }
             </button>
 
-            <button disabled={isChecked} onClick={onDelete}>
+            <button disabled={isChecked} onClick={() => onDelete(todo.id)}>
                 <FiTrash2 size={'1.5625rem'} color='white' />
             </button>
 

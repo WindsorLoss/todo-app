@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { TodoForm } from '../TodoForm'
 import { TodoList } from '../TodoList'
 import { Container } from './styles'
 
 export function TodoApp() {
 
-    const [todos, setTodos] = useState(['teste'])
+    const [todos, setTodos] = useState([])
     const [newTodo, setNewTodo] = useState('')
 
     function handleChangeCreatingTodo(text) {
@@ -16,7 +16,12 @@ export function TodoApp() {
         e.preventDefault()
 
         if(newTodo){    
-            setTodos([newTodo, ...todos])
+
+            const todo = {
+                id: Math.random() * 10000,
+                text: newTodo
+            }
+            setTodos([todo, ...todos])
     
             setNewTodo('')
         } else {
@@ -24,16 +29,23 @@ export function TodoApp() {
         }
     }
 
-    function handleDelete(index) {
-        const allTodos = todos
-        allTodos.splice(index, 1)
-        setTodos(allTodos)
+    function handleDelete(id) {
+        setTodos(todos.filter(todo => todo.id !== id))
+    }
+
+    function handleTodoEditing(text, id){
+        setTodos(todos.map(todo => {
+            if(todo.id === id){
+                return {
+                    id,
+                    text: text
+                }
+            }
+
+            return todo
+        }))
     }
     
-
-    useEffect(() => {
-        console.log(todos)
-    }, [todos])
 
     return (
         <Container>
@@ -46,16 +58,12 @@ export function TodoApp() {
             <h1>O que fazer em seguida?</h1>
 
             {
-                todos.map((todo, index) => {
+                todos.map((todo) => {
 
                     return <TodoList 
-                        key={index}
-                        onChange={text => {
-                            const allTodos = todos
-                            allTodos.splice(index, 1, text.target.value)
-                            setTodos(allTodos)
-                        }}
-                        onDelete={() => handleDelete(index)}
+                        key={todo.id}
+                        onChange={handleTodoEditing}
+                        onDelete={handleDelete}
                         todo={todo}
                     />
                 })
