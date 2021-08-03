@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Container } from './styles'
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md'
 import { FiTrash2, FiEdit, FiSave } from 'react-icons/fi'
@@ -8,8 +8,10 @@ export function TodoList({ onChange, onDelete, todo }) {
     const [isDisabled, setIsDisabled] = useState(true)
     const [isChecked, setIsChecked] = useState(false)
 
-    function handleEdit() {
+    const inputTodo = useRef()
 
+    function handleEdit() {
+        
         if(todo.text.length > 0){
             isDisabled ? setIsDisabled(false) : setIsDisabled(true)
         } else {
@@ -20,6 +22,10 @@ export function TodoList({ onChange, onDelete, todo }) {
     function handleCheck() {
         return isChecked ? setIsChecked(false) : setIsChecked(true)
     }
+
+    useEffect(() => {
+        inputTodo.current.focus()
+    }, [isDisabled])
 
     return (
         <Container>
@@ -38,6 +44,7 @@ export function TodoList({ onChange, onDelete, todo }) {
                 {
                     !isChecked
                     ?   <input 
+                            ref={inputTodo}
                             value={todo.text} 
                             disabled={isDisabled}
                             onChange={text => {
