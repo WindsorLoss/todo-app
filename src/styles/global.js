@@ -11,12 +11,6 @@ export const GlobalStyle = createGlobalStyle`
 
     }
 
-    @media (max-width: 860px) {
-        :root{
-            font-size: 10px;
-        }
-    }
-
     * {
         margin: 0;
         padding: 0;

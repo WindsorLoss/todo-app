@@ -36,6 +36,8 @@ export const Container = styled.div`
         font-size: 1.4rem;
         padding-left: 0.5rem;
         width: 100%;
+        overflow: hidden;
+        overflow-wrap: break-word;
     }
     
     div {
