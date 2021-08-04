@@ -10,6 +10,10 @@ export function TodoForm({ onSubmit }) {
         inputRef.current.focus()
     }, [])
 
+    function eraseInput() {
+        setTimeout(() => setNewTodo(''), 0.1)
+    }
+
     return (
         <Container>
             <form onSubmit={onSubmit}>
@@ -21,7 +25,7 @@ export function TodoForm({ onSubmit }) {
                     onChange={event => setNewTodo(event.target.value)}
                 />
 
-                <button>Criar</button>
+                <button onClick={eraseInput}>Criar</button>
             </form>
         </Container>
     )
