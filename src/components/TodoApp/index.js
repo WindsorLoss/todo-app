@@ -11,14 +11,16 @@ export function TodoApp() {
         e.preventDefault()
 
         const formData = new FormData(e.target)
+        const newTodo = formData.get('createTodoInput')
 
-        if(formData.get('createTodoInput')){    
+        if(newTodo.length > 0){    
 
             const todo = {
                 id: Math.random() * 10000,
-                text: formData.get('createTodoInput')
+                text: newTodo
             }
-            setTodos([todo, ...todos])
+            setTodos([todo, ...todos])                
+
         } else {
             alert('Nenhum valor inserido. Tente novamente.')
         }
