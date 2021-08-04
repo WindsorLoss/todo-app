@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Container } from './styles'
 
-export function TodoForm({ onSubmit, onChange, value }) {
+export function TodoForm({ onSubmit }) {
 
+    const [newTodo, setNewTodo] = useState('')
     const inputRef = useRef()
 
     useEffect(() => {
@@ -14,9 +15,10 @@ export function TodoForm({ onSubmit, onChange, value }) {
             <form onSubmit={onSubmit}>
                 <input 
                     ref={inputRef}
+                    name='createTodoInput'
                     placeholder='Anota aí, vai!'
-                    value={value}
-                    onChange={onChange}
+                    value={newTodo}
+                    onChange={event => setNewTodo(event.target.value)}
                 />
 
                 <button>Criar</button>

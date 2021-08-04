@@ -5,25 +5,20 @@ import { Container } from './styles'
 
 export function TodoApp() {
 
-    const [todos, setTodos] = useState([])
-    const [newTodo, setNewTodo] = useState('')
-
-    function handleChangeCreatingTodo(text) {
-        setNewTodo(text.target.value)
-    }
+    const [todos, setTodos] = useState([])    
 
     function handleSubmit(e) {
         e.preventDefault()
 
-        if(newTodo){    
+        const formData = new FormData(e.target)
+
+        if(formData.get('createTodoInput')){    
 
             const todo = {
                 id: Math.random() * 10000,
-                text: newTodo
+                text: formData.get('createTodoInput')
             }
             setTodos([todo, ...todos])
-    
-            setNewTodo('')
         } else {
             alert('Nenhum valor inserido. Tente novamente.')
         }
@@ -50,9 +45,7 @@ export function TodoApp() {
     return (
         <Container>
             <TodoForm 
-                onSubmit={handleSubmit} 
-                onChange={handleChangeCreatingTodo}
-                value={newTodo}
+                onSubmit={handleSubmit}
             />
 
             {
