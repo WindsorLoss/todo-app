@@ -4,7 +4,6 @@ export const Container = styled.div`
     width: 100%;
 
     display: flex;
-    justify-content: space-between;
 
     margin-bottom: .8rem;
 
@@ -32,40 +31,45 @@ export const Container = styled.div`
     }
 
     p {
-        text-decoration: line-through;
         font-size: 1.4rem;
-        padding-left: 0.5rem;
+        padding: 0.5rem;
         width: 100%;
         overflow: hidden;
         overflow-wrap: break-word;
+
+        &.todoChecked {
+            text-decoration: line-through;
+        }
+
     }
     
     div {
         
         display: flex;
-
-        width: 88%;
-
-        background: var(--shape-color);
-
-        justify-content: center;
         align-items: center;
 
-        border-radius: 15px;
+        &.todoInput {
 
-        padding-left: 1rem;
+            width: 100%;
 
-        button {
-            background: transparent;
+            background: var(--shape-color);
+
+            border-radius: 15px;
+
+            padding-left: 1rem;
+
+            button {
+                background: transparent;
+            }
+
+            
+
         }
 
         &.checked {
             filter: brightness(80%);
         }
 
-        &:last-child {
-            margin-bottom: 2rem;
-        }
     }
 
     button {

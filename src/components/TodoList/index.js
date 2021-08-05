@@ -16,6 +16,7 @@ export function TodoList({ onChange, onDelete, todo }) {
             isDisabled ? setIsDisabled(false) : setIsDisabled(true)
         } else {
             alert('Nenhum texto inserido. Tente novamente.')
+            inputTodo.current.focus()
         }
     }
  
@@ -24,14 +25,16 @@ export function TodoList({ onChange, onDelete, todo }) {
     }
 
     useEffect(() => {
-        inputTodo.current.focus()
+        if(!isDisabled) {
+            inputTodo.current.focus()
+        }
     }, [isDisabled])
 
     return (
         <Container>
 
             <div 
-                className={isChecked ? 'checked' : ''}
+                className={isChecked ? 'todoInput checked' : 'todoInput'}
             >
                 <button onClick={handleCheck}>
                     {
@@ -42,22 +45,25 @@ export function TodoList({ onChange, onDelete, todo }) {
                 </button>
 
                 {
-                    !isChecked
+                    !isDisabled
                     ?   <input 
                             ref={inputTodo}
                             value={todo.text} 
-                            disabled={isDisabled}
-                            onChange={text => {
-                                const textUpdated = text.target.value
+                            onChange={event => {
+                                const textUpdated = event.target.value
                                 onChange(textUpdated, todo.id)
                             }}
                         />
+                    :   isChecked 
+                    ?   <p className='todoChecked'>{todo.text}</p>
                     :   <p>{todo.text}</p>
                 }
                 
             </div>
 
-            <button onClick={handleEdit} style={{margin: '0 20px'}} disabled={isChecked}>
+           
+
+            <button onClick={handleEdit} style={{margin: '0 1.3rem'}} disabled={isChecked}>
                 {
                     isDisabled 
                     ? <FiEdit size={'1.5625rem'} color='white'/>
@@ -68,6 +74,9 @@ export function TodoList({ onChange, onDelete, todo }) {
             <button disabled={isChecked} onClick={() => onDelete(todo.id)}>
                 <FiTrash2 size={'1.5625rem'} color='white' />
             </button>
+
+            
+
 
         </Container>
     )
