@@ -97,7 +97,7 @@ export const Container = styled.div`
         }
 
         &:hover {
-            filter: brightness(80%)
+            filter: brightness(90%)
         }
 
         &:disabled {
