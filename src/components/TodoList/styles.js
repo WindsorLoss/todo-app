@@ -109,7 +109,6 @@ export const Container = styled.div`
         flex-direction: column;
         margin-bottom: 1rem;
 
-        border-radius: 15px;
         padding: 5px;
 
         .functionButtons {
