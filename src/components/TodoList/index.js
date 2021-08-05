@@ -61,23 +61,22 @@ export function TodoList({ onChange, onDelete, todo }) {
                 
             </div>
 
-           
+           <div className='functionButtons'>
 
-            <button onClick={handleEdit} style={{margin: '0 1.3rem'}} disabled={isChecked}>
-                {
-                    isDisabled 
-                    ? <FiEdit size={'1.5625rem'} color='white'/>
-                    : <FiSave size={'1.5625rem'} color='white'/>
-                }
-            </button>
+                <button onClick={handleEdit} disabled={isChecked}>
+                    {
+                        isDisabled 
+                        ? <FiEdit size={'1.5625rem'} color='white'/>
+                        : <FiSave size={'1.5625rem'} color='white'/>
+                    }
+                </button>
 
-            <button disabled={isChecked} onClick={() => onDelete(todo.id)}>
-                <FiTrash2 size={'1.5625rem'} color='white' />
-            </button>
+                <button disabled={isChecked} onClick={() => onDelete(todo.id)}>
+                    <FiTrash2 size={'1.5625rem'} color='white' />
+                </button>
 
+           </div>
             
-
-
         </Container>
     )
 }

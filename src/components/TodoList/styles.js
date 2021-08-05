@@ -62,14 +62,21 @@ export const Container = styled.div`
                 background: transparent;
             }
 
-            
-
         }
 
         &.checked {
             filter: brightness(80%);
         }
 
+        
+    }
+
+    .functionButtons {
+        
+        button:first-child{
+            margin: 0 18px
+        }
+       
     }
 
     button {
@@ -78,8 +85,8 @@ export const Container = styled.div`
         border: 0;
         border-radius: 15px;
 
-        width: 3rem;
-        height: 2.8rem;
+        width: 48px;
+        height: 44.8px;
 
         outline: 0;
 
@@ -94,6 +101,30 @@ export const Container = styled.div`
                 transform: translateY(0px);
             }
             
+        }
+
+    }
+
+    @media (max-width: 860px) {
+        flex-direction: column;
+        margin-bottom: 1rem;
+
+        border-radius: 15px;
+        padding: 5px;
+
+        .functionButtons {
+            justify-content: space-between;
+
+            button {
+                width: 49%;
+                margin-top: 5px;
+
+                &:first-child {
+                    margin: 0;
+                    margin-top: 5px;
+                }
+            }
+   
         }
 
     }

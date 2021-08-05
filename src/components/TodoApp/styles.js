@@ -19,4 +19,14 @@ export const Container = styled.div`
         margin-top: 3rem;
         margin-bottom: 2rem;
     }
+
+    @media (max-width: 860px){
+        width: 60%;
+    }
+
+    @media (max-width: 400px) {
+        width: 80%;
+    }
+
+
 `

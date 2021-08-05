@@ -17,7 +17,7 @@ export const Container = styled.div`
         border-radius: 15px;
 
         width: 78%;
-        height: 2.58rem;
+        height: 44.7px;
         padding-left: 1rem;
 
         font-size: 1.4rem;
@@ -55,5 +55,22 @@ export const Container = styled.div`
 
     }
 
-    
+    @media (max-width: 860px) {
+        form {
+            flex-direction: column;
+
+            input {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            button {
+                width: 100%;
+                height: 44.7px;
+
+                font-size: 1.5rem;
+            }
+        }
+    }
+
 `
