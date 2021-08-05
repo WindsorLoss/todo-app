@@ -90,8 +90,14 @@ export const Container = styled.div`
 
         outline: 0;
 
+        transition: filter 0.2s;
+
         &:active {
             transform: translateY(4px);
+        }
+
+        &:hover {
+            filter: brightness(80%)
         }
 
         &:disabled {
