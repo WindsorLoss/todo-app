@@ -59,8 +59,8 @@ export function TodoList({ onChange, onDelete, todo }) {
                             }}
                         />
                     :   isChecked 
-                    ?   <p className='todoChecked'>{todo.text}</p>
-                    :   <p>{todo.text}</p>
+                        ?   <p className='todoChecked'>{todo.text}</p>
+                        :   <p>{todo.text}</p>
                 }
                 
             </div>
