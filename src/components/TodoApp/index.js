@@ -16,7 +16,7 @@ export function TodoApp() {
     }
 
     function handleTodoEditing(text, id){
-        setTodos(todos.map(todo => todo.id === id ? { id, text: text } : todo))
+        setTodos(todos.map(todo => todo.id === id ? { id, text } : todo))
     }
 
     return (
