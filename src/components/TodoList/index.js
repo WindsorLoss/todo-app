@@ -2,11 +2,15 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Container } from './styles'
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md'
 import { FiTrash2, FiEdit, FiSave } from 'react-icons/fi'
+import { Modal } from '../Modal'
 
 export function TodoList({ onChange, onDelete, todo }) {
 
     const [isDisabled, setIsDisabled] = useState(true)
     const [isChecked, setIsChecked] = useState(false)
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    // () => onDelete(todo.id)
 
     const inputTodo = useRef()
 
@@ -31,6 +35,7 @@ export function TodoList({ onChange, onDelete, todo }) {
     }, [isDisabled])
 
     return (
+        <>
         <Container>
 
             <div 
@@ -71,12 +76,24 @@ export function TodoList({ onChange, onDelete, todo }) {
                     }
                 </button>
 
-                <button disabled={isChecked} onClick={() => onDelete(todo.id)}>
+                <button disabled={isChecked} onClick={() => setIsModalOpen(true)}>
                     <FiTrash2 size={'1.5625rem'} color='white' />
                 </button>
 
-           </div>
+            </div>
+
             
         </Container>
+            {
+                isModalOpen && 
+                <Modal 
+                    onClose={() => setIsModalOpen(false)}
+                    onDelete={() => onDelete(todo.id)}
+                >
+                    <h1>Tem certeza que deseja deletar esta nota?</h1>
+                </Modal>
+            }
+
+        </>
     )
 }
