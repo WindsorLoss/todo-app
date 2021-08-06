@@ -10,22 +10,35 @@ export function TodoForm({ onSubmit }) {
         inputRef.current.focus()
     }, [])
 
-    function eraseInput() {
-        setTimeout(() => setNewTodo(''), 0.1)
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        if(newTodo.length > 0){    
+
+            const todo = {
+                id: Math.random() * 10000,
+                text: newTodo
+            }
+            
+            setNewTodo('')
+            onSubmit(todo)
+
+        } else {
+            alert('Nenhum valor inserido. Tente novamente.')
+        }
     }
 
     return (
         <Container>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input 
                     ref={inputRef}
-                    name='createTodoInput'
                     placeholder='Anota aí, vai!'
                     value={newTodo}
                     onChange={event => setNewTodo(event.target.value)}
                 />
 
-                <button onClick={eraseInput}>Criar</button>
+                <button>Criar</button>
             </form>
         </Container>
     )

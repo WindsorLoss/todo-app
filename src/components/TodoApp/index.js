@@ -7,23 +7,8 @@ export function TodoApp() {
 
     const [todos, setTodos] = useState([])    
 
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        const formData = new FormData(e.target)
-        const newTodo = formData.get('createTodoInput')
-
-        if(newTodo.length > 0){    
-
-            const todo = {
-                id: Math.random() * 10000,
-                text: newTodo
-            }
-            setTodos([todo, ...todos])                
-
-        } else {
-            alert('Nenhum valor inserido. Tente novamente.')
-        }
+    function handleSubmit(todo) {
+        setTodos([todo, ...todos])                
     }
 
     function handleDelete(id) {
@@ -31,18 +16,8 @@ export function TodoApp() {
     }
 
     function handleTodoEditing(text, id){
-        setTodos(todos.map(todo => {
-            if(todo.id === id){
-                return {
-                    id,
-                    text: text
-                }
-            }
-
-            return todo
-        }))
+        setTodos(todos.map(todo => todo.id === id ? { id, text: text } : todo))
     }
-    
 
     return (
         <Container>
