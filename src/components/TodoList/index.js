@@ -10,7 +10,6 @@ export function TodoList({ onChange, onDelete, todo }) {
     const [isChecked, setIsChecked] = useState(false)
 
     const [isModalOpen, setIsModalOpen] = useState(false)
-    // () => onDelete(todo.id)
 
     const inputTodo = useRef()
 
