@@ -34,7 +34,6 @@ export function TodoList({ onChange, onDelete, todo }) {
     }, [isDisabled])
 
     return (
-        <>
         <Container>
 
             <div 
@@ -81,8 +80,6 @@ export function TodoList({ onChange, onDelete, todo }) {
 
             </div>
 
-            
-        </Container>
             {
                 isModalOpen && 
                 <Modal 
@@ -92,7 +89,7 @@ export function TodoList({ onChange, onDelete, todo }) {
                     <h1>Tem certeza que deseja deletar esta nota?</h1>
                 </Modal>
             }
-
-        </>
+            
+        </Container>
     )
 }
